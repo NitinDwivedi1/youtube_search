@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial scale=1">
+    <title>Search Youtube</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading"> Search YouTube</h1>
+                <p class="lead-text-muted"> Get top 9 results for your query here!!</p>
+                <form method="POST">
+                    <div class="input-group mb-3">
+                        <input type="text" name="query" class="form-control">
+                    </div>
+                    <p>
+                        <button type="submit" name="submit" value="search" class="btn btn-primary my-2">YouTube Search</button>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    {% for video in videos %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img src="{{video.thumbnail}}" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                                <div class="card-body">
+                                    <p class="card-text">{{video.title}}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{{video.url}}">View</a>
+                                        </div>
+                                        <small class="text-muted">{{video.duration}} min</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
